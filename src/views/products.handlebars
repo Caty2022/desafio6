@@ -1,0 +1,36 @@
+<header>
+<h1 style="text-align: center;"> Productos </h1>
+</header>
+<div class="miPerfil">
+<h2>Mi Perfil</h2>
+<p>Bienvenido {{user.first_name}} {{user.last_name}}!</p>
+<p>Email: {{user.email}}</p>
+<p>Edad: {{user.age}}</p>
+<a href="/api/sessions/logout">Logout</a>
+</div>
+
+
+<div class="container">
+{{#each productos}}
+ <div class="productCard">
+    <img class="productImage" src="zueco.jpg">
+    <div class="productDetails">
+         <h2 class="productName">{{title}}</h2>
+        <p class="productDescription">{{description}}</p>
+        <p>Price: ${{price}}</p>
+        <p>Category: {{category}}</p>
+        <button class="btnAgregar">Agregar al Carrito</button>
+    </div>
+ </div>
+{{/each}}
+</div>
+
+<div class="paginacion">
+{{#if hasPrevPage}}
+    <a class="btnPage" href="/products?page={{prevPage}}"> Anterior <a/>
+{{/if}}
+<p class="numeroPagina"> Pagina {{currentPage}} de {{totalPages}} </p>
+{{#if hasNextPage}}
+    <a class="btnPage" href="/products?page={{nextPage}}"> Siguiente <a/>
+{{/if}} 
+</div>
